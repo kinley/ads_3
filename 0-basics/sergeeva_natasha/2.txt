@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Task0Num2{
+	
+	public static void main(String[] args)
+    {
+       
+       char[] a;
+       Scanner sc = new Scanner(System.in);
+       System.out.print("Enter your word: ");
+       String s = sc.next();
+       sc.close();
+       
+       a=s.toCharArray();
+       int n=s.length();
+       boolean b=true;
+       for (int i=0;i<n/2 && b;i++)
+    	   if (a[i]!=a[n-1-i]) b=false;
+       if (b) System.out.println("Yes!");
+       else System.out.println("No");
+    }
+}
