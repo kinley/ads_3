@@ -1,0 +1,121 @@
+package apa;
+
+public class complex {
+	
+	
+	private int rad;
+	private double ugol;
+        
+        complex(){
+        	this.rad = 0;    
+        	this.ugol = 0;
+        }
+        
+        complex(int a,int b){
+        	this.rad = a;    
+        	this.ugol = b;
+        }
+
+
+        complex(int a){
+        	this.rad = a;
+        	this.ugol = 0;
+        }
+
+
+        int setRad(int a){
+        	return rad = a;
+        }
+        
+        double setUgol(double a){
+        	return ugol = a;
+        }
+        
+        int getRad(int a){
+        	return rad;
+        }
+        
+        double getUgol(double a){
+        	return ugol;
+        }
+        
+        
+    public static complex mult(complex a,complex b){
+    	
+    	complex c= new complex();
+    	c.rad = a.rad * b.rad;
+    	c.ugol = a.ugol + b.ugol;
+    	
+    	return c;
+        }
+
+    public static complex del(complex a,complex b){
+    	
+    	complex c= new complex();
+    	c.rad = a.rad / b.rad;
+    	c.ugol = a.ugol - b.ugol;
+    	
+    	return c;
+    }
+    
+    // следующие 2 действиях - моя импровизация.
+    // ибо не помню,чтобы нам давалась формула для вычисления + 
+    // и - в тригономертических координатах
+    
+    public static complex addcomplex(complex a,complex b){
+    	
+    	complex c = new complex() ;
+    	
+    	c.rad = a.rad + b.rad;
+    	c.ugol = a.ugol + b.ugol;
+    	
+    	return c;
+    }
+
+    public static complex minuscomplex(complex a,complex b){
+    	
+    	complex c = new complex();
+    	c.rad = a.rad - b.rad;
+    	c.ugol = a.ugol - b.ugol;
+			
+    	return c;
+    }
+    
+    public void ravno(complex a,complex b)
+    {
+    	a.rad = b.rad;
+    	a.ugol = b.ugol;
+    }
+    
+    public static complex show(complex a)
+    {
+    	System.out.println(a.rad + "*(cos" + a.ugol + "pi+i*sin" + a.ugol + "pi)");
+    	return a;
+    }
+    
+    public static void main(String[] args){
+    	
+    	complex c = new complex(4,5); 
+    	complex b = new complex();
+    	complex x = new complex(8);
+    	
+    	System.out.print("c=");
+    	show(c);
+    	System.out.print("b=");
+    	show(b);
+    	System.out.print("x=");
+    	show(x);
+    	System.out.print("c*x=");
+    	
+    	b=mult(c,x);
+    	show(b);
+    	System.out.print("b=");
+    	show(b);
+    	System.out.print("b/c=");
+    	
+    	b=del(b,c);
+    	show(b);
+    	
+    }
+    
+}

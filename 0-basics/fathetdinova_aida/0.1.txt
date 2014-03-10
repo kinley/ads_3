@@ -1,0 +1,41 @@
+package apa;
+import java.util.*;
+public class first {
+
+	public static void main(String[] args) 
+	{
+		int n,m;
+		Scanner sc = new Scanner(System.in);
+		Random r = new Random();	
+		
+		System.out.println("enter size n of massive :");
+		n = sc.nextInt();
+		System.out.println("enter size m of massive :");
+		m = sc.nextInt();
+		
+		boolean[][] array = new boolean[n][m];
+		
+		for(int i=0;i<m+1;++i)
+			System.out.print(i+" ");
+			System.out.println();
+		
+		for(int i = 0; i < n; i++)
+			
+		{     System.out.print(i+1+" ");
+			
+			for(int j = 0; j < m; j++)
+			{
+				array[i][j] = r.nextBoolean();		
+				
+				if(array[i][j]==true)
+					System.out.print("* ");
+				else
+					System.out.print("# ");
+			}
+			System.out.println();
+		}
+		sc.close();
+	}
+
+
+}
