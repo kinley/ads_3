@@ -1,0 +1,42 @@
+// ѕрограмма ориентирована на корректный ввод данных:
+// »ћя пробел ÷елое„исло1 пробел ÷елое„исло2 пробел »ћя ...
+// «нак завершени€ потока ввода - #
+// Ќапример: name1 465 32 name2 2341 98 name3 43 2 #
+
+import java.util.Scanner;
+
+
+public class Task0Num3{
+	
+	public static void main(String[] args)
+    {
+		int a,b;
+	       Scanner sc = new Scanner(System.in);
+	       String s = sc.next();
+	       while (s!="#")
+	      {    
+	    	   System.out.println("------------------------------------------------");	    	   
+	    	   System.out.printf("%-10s",s);
+	    	   System.out.print("|");
+	    	   
+	    	   s=sc.next();
+	    	   a=Integer.parseInt(s);
+	    	   System.out.printf("%10d",a);
+	    	   System.out.print("|");
+	    	   
+	    	   s=sc.next();
+	    	   b=Integer.parseInt(s);
+	    	   System.out.printf("%10d",b);
+	    	   System.out.print("|");
+	    	   
+	    	   double c=(double)a/(double)b;
+	    	   System.out.printf("%13.3f",c);
+	    	   System.out.println();
+
+	    	   s = sc.next();
+	       }
+	      sc.close();
+	       
+    }
+    
+}

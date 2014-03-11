@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Task0Num4{
+	
+	public static void main(String[] args)
+    {
+        System.out.println("Enter p=");
+		Scanner sc = new Scanner(System.in);
+        int p = sc.nextInt();
+        System.out.println("Enter q=");
+        int  q = sc.nextInt();
+        sc.close();
+		p=Math.abs(p); q=Math.abs(q);
+		while ((p>0)&&(q>0))
+		{
+			if (p>q) p=p%q;
+			else q=q%p;
+			System.out.println("p="+p+ "  "+"q="+q);
+		}
+		System.out.print("мнд=");
+		System.out.print(p+q);
+    }
+}
