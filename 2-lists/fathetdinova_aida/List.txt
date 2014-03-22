@@ -1,0 +1,146 @@
+package apa;
+
+import java.util.Scanner;
+
+public class List {
+	
+	private class node
+	{ 
+		String slovo;
+		node next;	
+		
+		node(String sl)
+		{
+			this.slovo = sl;
+		}
+		
+		public String getval()
+		{
+			return this.slovo;
+				
+		}
+		
+	}
+	
+	private node top;
+	int n;
+	
+	List() {
+		
+		top = null;
+		n = 0;
+	}
+
+	public boolean isEmpty() {
+		
+		return top == null ;
+	}
+	
+	public int size() {
+		
+		return n;
+	}
+	
+	public void push(String sl) {
+		node p = new node(sl);
+		
+		if (top == null) 
+			top = p;
+		else
+		{
+			p.next = top;
+			top = p;
+			
+		} 
+		
+		n++;
+	}
+	
+	
+	public String poptop() {
+		
+		String s="";
+		s = top.getval();
+		top = top.next;
+		n--;
+		return s;
+	}
+	
+	public List create(Scanner sc,int m) {
+		
+		String s;
+		int i=0;
+		System.out.print("enter words: ");
+		while (i < m)
+		{
+			s = sc.next();
+			this.push(s);			
+			i++;
+		
+		}
+		
+		return this;		
+	
+		}
+	
+	public void show() {
+		
+		node p=top;
+		
+		while(p != null)
+		{
+			System.out.print(p.getval() + " ");
+			p = p.next;
+		}
+		
+		System.out.println();
+	}
+
+	public void razdelit() {
+		
+		List a = new List();
+		List b = new List();
+		
+		int i=1;
+		
+		while(top != null)
+		{ 
+			boolean chetn;
+			if (i%2==0) 
+				chetn=true;
+			else 
+				chetn = false;
+		
+			if(chetn)
+				a.push(this.top.getval());		
+			else 
+				b.push(this.top.getval());		
+			
+			top = top.next;
+			i++;
+			
+		}
+		System.out.println("List a: ");
+		a.show();
+		System.out.print("List b: ");
+		b.show();
+		}
+	
+	public static void main(String[] args) {
+		
+		List l = new List();
+		Scanner sc = new Scanner (System.in);
+		l.create(sc,3);
+		
+		System.out.println("size of your list: " + l.size());
+		System.out.println("your list: ");
+		l.show();
+		System.out.println("your new lists: ");
+		l.razdelit();
+		
+		
+	}
+	
+	
+
+}
