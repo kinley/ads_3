@@ -1,4 +1,4 @@
-
+п»ї
 public class Matrix {
 	public final int  WIDTH=2;
 	public final int HEIGHT=2;
@@ -23,8 +23,8 @@ public class Matrix {
 		
 	}
 	/**
-	 * Покомпонентное сложение матриц
-	 * @param addition Матрица, прибавляемая к текущей
+	 * РџРѕРєРѕРјРїРѕРЅРµРЅС‚РЅРѕРµ СЃР»РѕР¶РµРЅРёРµ РјР°С‚СЂРёС†
+	 * @param addition РњР°С‚СЂРёС†Р°, РїСЂРёР±Р°РІР»СЏРµРјР°СЏ Рє С‚РµРєСѓС‰РµР№
 	 */
 	public void sum(Matrix addition){
 		if(this.HEIGHT!=addition.HEIGHT||this.WIDTH!=addition.WIDTH){
@@ -37,8 +37,8 @@ public class Matrix {
 		}
 	}
 	/**
-	 * Умножение матрицы на скаляр
-	 * @param scalar Скалярная величина
+	 * РЈРјРЅРѕР¶РµРЅРёРµ РјР°С‚СЂРёС†С‹ РЅР° СЃРєР°Р»СЏСЂ
+	 * @param scalar РЎРєР°Р»СЏСЂРЅР°СЏ РІРµР»РёС‡РёРЅР°
 	 */
 	public void mult(double scalar){
 		for(int i=0;i<this.HEIGHT;i++){
@@ -48,9 +48,9 @@ public class Matrix {
 		}
 	}
 	/**
-	 * Умножение текущей матрицы на другую матрицу
-	 * @param multiplier Множитель
-	 * @return Результирующая матрица
+	 * РЈРјРЅРѕР¶РµРЅРёРµ С‚РµРєСѓС‰РµР№ РјР°С‚СЂРёС†С‹ РЅР° РґСЂСѓРіСѓСЋ РјР°С‚СЂРёС†Сѓ
+	 * @param multiplier РњРЅРѕР¶РёС‚РµР»СЊ
+	 * @return Р РµР·СѓР»СЊС‚РёСЂСѓСЋС‰Р°СЏ РјР°С‚СЂРёС†Р°
 	 */
 	public Matrix mult(Matrix multiplier){
 		if(this.HEIGHT!=multiplier.WIDTH){
@@ -80,8 +80,8 @@ public class Matrix {
 		return result;
 	}
 	/**
-	 * Определитель матрицы
-	 * @return Определитель
+	 * РћРїСЂРµРґРµР»РёС‚РµР»СЊ РјР°С‚СЂРёС†С‹
+	 * @return РћРїСЂРµРґРµР»РёС‚РµР»СЊ
 	 */
 	public double det(){
 		return getElement(0, 0)*getElement(1,1)-getElement(0, 1)*getElement(1, 0);

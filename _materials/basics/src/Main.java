@@ -11,9 +11,9 @@ public class Main {
 //		StdOut.println(i);
 		
 //		/* FILE INPUT & OUTPUT */
-//		In in = new In("input.txt");
-//		String data = in.readAll();
-//		StdOut.println(data);
+		In in = new In("input.txt");
+		String data = in.readAll();
+		StdOut.println(data);
 //		
 //		String filename = "output.txt";
 //		Out out = new Out(filename);
