@@ -1,0 +1,27 @@
+package homework;
+import java.util.*; 
+public class Work_2 
+{
+	private static Scanner sc;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Davai,vvodi stroky!");
+		sc = new Scanner(System.in);
+		String st = sc.next();
+		boolean ch = true;
+		int i=0, j=st.length()-1;
+		while (ch && i<=(st.length()+1)/2){
+			if(st.charAt(i) != st.charAt(j))
+				ch = false;
+			else{
+				i++;
+				j--;
+			}	
+		}
+		if (ch)
+			System.out.println("Palindrome!");
+		else
+			System.out.println("Is not a palindrome!");
+	}
+}
