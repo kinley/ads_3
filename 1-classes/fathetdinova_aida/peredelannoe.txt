@@ -1,0 +1,165 @@
+package apa;
+
+public class complex {
+	
+	
+	private double rad;
+	private double ugol;
+        
+        complex(){
+        	this.rad = 0;    
+        	this.ugol = 0;
+        }
+        
+        complex(int a,int b){
+        	this.rad = a;    
+        	this.ugol = b;
+        }
+
+
+        complex(int a){
+        	this.rad = a;
+        	this.ugol = 0;
+        }
+        
+    
+            public static complex totrigcomplex(double x,double y){
+
+        	complex c= new complex();
+        	c.rad = Math.sqrt(x*x+y*y);
+     
+        	if(x == 0){
+        		if(y == 0)
+        			c.ugol = 0;
+        		else{
+        			if( y > 0)
+        				c.ugol = Math.PI/2;	
+        			else
+        			c.ugol = - Math.PI/2;	}
+        	}
+        	
+        	if(x > 0)
+        		c.ugol = Math.atan(y/x);  	
+        	else{
+        	if(y < 0)
+        		c.ugol = (Math.PI + Math.atan(y/x));
+        	else
+        		c.ugol = (Math.PI + Math.atan(y/x));	
+        	}
+        	
+        	return c;
+        
+        }
+        
+        
+    public static complex multcomplex(complex a,complex b){
+    	
+    	
+    	complex c = new complex();
+    	c.rad = a.rad * b.rad;
+    	c.ugol = a.ugol + b.ugol;
+    	
+    	return c;
+        }
+
+    public static complex delcomplex(complex a,complex b){
+    	
+    	complex c = new complex();
+    	c.rad = a.rad / b.rad;
+    	c.ugol = a.ugol - b.ugol;
+    	
+    	return c;
+    }
+    
+    
+    public static complex addcomplex(complex a,complex b){
+    	
+    	complex c = new complex() ;
+    	
+    	double x1 = a.rad*Math.cos(a.ugol);
+    	double y1 = a.rad*Math.sin(a.ugol);
+    	
+    	double x2 = b.rad*Math.cos(b.ugol);
+    	double y2 = b.rad*Math.sin(b.ugol);
+    	
+    	double add1 = (x1+x2);
+    	double add2 = (y1+y2);
+    	
+    	c = totrigcomplex(add1,add2);
+    	
+    	return c;
+    }
+    public static complex minuscomplex(complex a,complex b){
+    	
+    	complex c = new complex() ;
+    	
+    	double x1 = a.rad*Math.cos(a.ugol);
+    	double y1 = a.rad*Math.sin(a.ugol);
+    	
+    	double x2 = b.rad*Math.cos(b.ugol);
+    	double y2 = b.rad*Math.sin(b.ugol);
+    	
+    	double minus1 = (x1-x2);
+    	double minus2 = (y1-y2);
+    	
+    	c = totrigcomplex(minus1,minus2);
+    	
+    	return c;
+    }
+    
+    public void ravno(complex a,complex b)
+    {
+    	a.rad = b.rad;
+    	a.ugol = b.ugol + 2*Math.PI;
+    }
+    
+    public static complex show(complex a)
+    {
+    	System.out.println(a.rad + "*(cos" + a.ugol + "+i*sin" + a.ugol + ")");
+    	return a;
+    }
+    
+    public static void main(String[] args){
+    	
+    	complex c = new complex(4,5); 
+    	complex b = new complex();
+    	complex x = new complex(8);
+    	
+    	System.out.print("c=");
+    	show(c);
+    	System.out.print("b=");
+    	show(b);
+    	System.out.print("x=");
+    	show(x);
+    	System.out.print("c*x=");
+    	
+    	b=multcomplex(c,x);
+    	show(b);
+    	System.out.print("b=");
+    	show(b);
+    	System.out.print("b/c=");
+    	
+
+    	b=delcomplex(b,c);
+    	show(b);
+    	
+    	
+    	
+    	complex a = new complex(4,5); 
+    	System.out.print("a= ");
+    	show(a);
+    	complex v = new complex(7,3);
+    	
+    	System.out.print("v= ");
+    	show(v);
+    	complex m = new complex();
+    	complex m2 = new complex();
+    	System.out.print("m// a + v=  ");
+    	m=addcomplex(a,v);
+    	show(m);
+    	System.out.print("v// m - a=  ");
+    	m2=minuscomplex(m,a);
+    	show(m2);
+    }
+    
+}
