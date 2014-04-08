@@ -1,6 +1,10 @@
 package domashka;
 
+
+
+
 public class Bipole {
+	
 	
 	private double amperage;
 	private double resistance;
@@ -35,29 +39,58 @@ public class Bipole {
 	
 	double Power()
 	{
-		return Voltage()*amperage;
+		return amperage*amperage*resistance;
 	}
 	
-	Bipole SerialConnection(Bipole Bp)
+	
+	
+	public static class Circuit
 	{
-		Bipole x = new Bipole(this.amperage,this.resistance + Bp.resistance);
-		return x;
+		private double amperage;
+		private double resistance;
+		private double voltage;
+		private double power;
+		
+		public static Circuit SerialConnection(Bipole a, Bipole b)
+		{
+			Circuit c = new Circuit();
+			c.amperage = (a.amperage + b.amperage)/2;
+			c.voltage = a.Voltage() + b.Voltage();
+			c.power = a.Power() + b.Power();
+			c.resistance = a.resistance + b.resistance;
+			return c;
+		}
+		
+		public static Circuit ParallelConnection(Bipole a, Bipole b)
+		{
+			Circuit c = new Circuit();
+			c.amperage = a.amperage + b.amperage;
+			c.voltage = (a.Voltage() + b.Voltage())/2;
+			c.power = c.power = a.Power() + b.Power();
+			c.resistance = (a.resistance * b.resistance)/(a.resistance + b.resistance);
+			return c;
+		}
+		
+		public String toString()
+		{
+			return "amperage = " + amperage + "\n"
+					+ "voltage = " + voltage + "\n"
+					+ "power = " + power + "\n"
+					+ "resistance = " + resistance;
+		}
+		
 	}
-	
-	Bipole ParallelConnection(Bipole Bp)
-	{
-		Bipole x = new Bipole(this.amperage + Bp.amperage,this.resistance * Bp.resistance/
-				(this.resistance + Bp.resistance));
-		return x;
-	}
-	
 	
 	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		Bipole a = new Bipole(2,4);
+		Bipole b = new Bipole(1,3);
 		
-	}
+		System.out.println(Circuit.ParallelConnection(a, b));
+		System.out.println(Circuit.SerialConnection(a, b));
 
+	}
 }
