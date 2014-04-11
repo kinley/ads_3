@@ -1,0 +1,18 @@
+package homework;
+import java.util.*;
+public class Work_3 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		String st = sc.next();
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		sc.close();
+		System.out.printf("|"+"%20s","   Name   ");
+		System.out.printf("%10s","|"+" A "+"|");
+		System.out.printf("%10s","|"+" B "+"|");
+		System.out.printf("%10s","  A/B ");
+		System.out.println();
+		System.out.printf("|"+"%20s %9s %9s %10.3f\n",st,"| "+a+" |","| "+b+" |",(double)a/b);
+	}
+}
