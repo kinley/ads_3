@@ -1,0 +1,103 @@
+package homework;
+
+public class Sector {
+	private double x1,y1,x2,y2,x3,y3;
+	
+	Sector()
+	{
+		x1=0;
+		y1=0;
+		x2=1;
+		y2=-1;
+		x3=-1;
+		y3=-1;
+	}
+	
+	Sector(double x1,double y1,double x2,double y2,double x3,double y3)
+	{
+		this.x1=x1;
+		this.y1=y1;
+		this.x2=x2;
+		this.y2=y2;
+		this.x3=x3;
+		this.y3=y3;
+	}
+	
+	public boolean isSector()
+	{
+		return ((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)==(x1-x3)*(x1-x3)+(y1-y3)*(y1-y3));
+	}
+	
+	public double angle()
+	{
+		double side1=(x1-x2)*(x1-x2)+(y1-y2)*(y1-y2);
+		double side2=(x1-x3)*(x1-x3)+(y1-y3)*(y1-y3);
+		double side3=(x2-x3)*(x2-x3)+(y2-y3)*(y2-y3);
+		return Math.toDegrees(Math.acos((side1+side2-side3)/(2*Math.sqrt(side1*side2))));
+	}
+	
+	public double square()
+	{
+		return Math.PI*((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))*angle()/360;
+	}
+	
+	public double arc()
+	{
+		return 2*Math.PI*Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))*angle()/360;
+	}
+	
+	public void turn(double arc)//protiv 4asovoi strelki
+	{
+		double nc=Math.cos(Math.toRadians(arc));
+		nc = (  (double)Math.round(nc * 100000000000L)  ) / 100000000000L;
+		double ns=Math.sin(Math.toRadians(arc));
+		ns = (  (double)Math.round(ns * 100000000000L)  ) / 100000000000L;
+
+		double x=x1;
+		double y=y1;
+		x1=x*nc-y*ns;
+		y1=x*ns+y*nc;
+
+		x=x2;
+		y=y2;
+		x2=x*nc-y*ns;
+		y2=x*ns+y*nc;
+
+		x=x3;
+		y=y3;
+		x3=x*nc-y*ns;
+		y3=x*ns+y*nc;
+	}
+	
+	public void shift(double x,double y)
+	{
+		x1+=x;
+		x2+=x;
+		x3+=x;
+		y1+=y;
+		y2+=y;
+		y3+=y;
+	}
+	
+	public void show()
+	{
+		System.out.println(x1+" "+y1+"|"+x2+" "+y2+"|"+x3+" "+y3);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Sector must have round_center in x1,y1!!!
+		
+		Sector sec=new Sector();
+		System.out.println(sec.isSector());
+		System.out.println(sec.angle());
+		System.out.println(sec.square());
+		System.out.println(sec.arc());
+		sec.show();
+		sec.turn(90);
+		sec.show();
+		sec.shift(2, 0);
+		sec.show();
+		
+	}
+}
