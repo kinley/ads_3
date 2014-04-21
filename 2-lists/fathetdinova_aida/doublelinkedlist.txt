@@ -1,0 +1,175 @@
+package apa;
+
+import java.util.Scanner;
+
+
+public class Listt {
+
+
+	private class node
+	{ 
+		int k;
+		node next;
+		node prev;
+
+
+		node(int value){
+
+			this.k = value;
+		}
+           
+		node(){
+
+			this.k=0;		
+		}
+
+		public int getval(){
+
+			return this.k;
+		}
+
+
+	}
+
+
+	private node top;
+	private node end;
+	int n;
+
+
+	Listt() {
+
+		top = null;
+		n = 0;
+	}
+
+
+	public boolean isEmpty() {
+
+		return top == null ;
+	}
+
+
+	public int size() {
+
+		return n;
+	}
+
+
+	public void push(int s) {
+		node p = new node(s);
+      
+		if (top == null) {
+			
+			top = p;
+			end = p;
+			top.prev = null;
+			top.next = null;
+			}
+
+		else{  
+
+ 		p.next=null;
+		end.next = p;
+		p.prev = end;
+        end = p;
+
+		} 
+
+		n++;
+	}
+
+  
+
+
+
+	public Listt create(Scanner sc,int m) {
+
+		int s;
+		int i=0;
+		System.out.print("enter: ");
+		while (i < m){
+			
+			s = sc.nextInt();
+			this.push(s);			
+			i++;
+		}
+		return this;		
+		}
+
+
+	public void show() {
+		
+		node p=top;
+		while(p != null)
+		{
+			System.out.print(p.getval() + " ");
+			p = p.next;
+		}
+		System.out.println();
+	}
+
+
+
+	public int pop(int pos)
+	{
+			if(pos > n){
+				
+				System.out.println("error");
+				return 0;
+				}
+			
+           else{
+
+			node p = top;
+
+			 int i=0;
+			 while ( i < pos ){
+				 
+				 p = p.next; i ++;
+				 }
+
+				if(p == top){
+					
+				top = top.next;
+				top.prev = null;
+				n --;
+				return p.k;
+			}
+			
+				if(p == end){
+					
+				node q = p.prev;
+				q.next = null;
+				end = q;
+				n --;
+				return p.k;
+			}
+		   
+				 node q = p.prev;
+				 q.next = p.next;
+				 n --;
+				 return p.k;	 
+		
+		}		
+	}
+		
+	
+			
+
+	public static void main(String[] args) {
+
+
+		Listt l = new Listt();
+		Scanner sc = new Scanner (System.in);
+		l.create(sc,5);
+		l.show();
+
+		l.pop(3);
+		
+		System.out.println("your list: ");
+		l.show();
+
+	}
+
+}
