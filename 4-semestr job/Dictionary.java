@@ -28,7 +28,7 @@ public class Dictionary {
 		return rankingTable[hashFunction(item)].contains(item);
 	}
 	
-	boolean isOverflowed()
+	private boolean isOverflowed()
 	{
 		return size >= rankingTable.length;
 	}
@@ -72,7 +72,7 @@ public class Dictionary {
 		return size;
 	}
 	
-	public int hashFunction(String str)
+	private int hashFunction(String str)
 	{		
 		int sum = 0;
 		
