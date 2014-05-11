@@ -1,0 +1,139 @@
+package apa;
+import java.util.*;
+
+public class threewqs {
+
+	public static void sort(Comparable [] a)
+	{	
+		sort(a,0,a.length-1);
+	}
+	
+		static void sort(Comparable a[], int lo, int hi)
+		{ 
+			if(hi<=lo) return;
+			
+		int i = lo, j = hi+1;
+	    int p = lo, q = hi+1;
+	    Comparable v = a[lo];
+	    
+	    while (true) {
+	    	
+	    	 while (a[++i].compareTo(v) < 0)  if (i == hi) break;
+	        while (v.compareTo(a[--j]) < 0)  if (j == lo) break;
+
+	        if (i == j && a[i] == v)   exch(a, ++p, i);
+	        
+	        if (i >= j) break;
+	        exch(a, i, j);
+	        
+	        if  (a[i] == v) exch(a, ++p, i);
+	        if  (a[j] == v) exch(a, --q, j);
+		}
+	    i = j + 1;
+	    for (int k = lo; k <= p; k++) exch(a, k, j--);
+	    for (int k = hi; k >= q; k--) exch(a, k, i++);
+
+	    sort(a, lo, j);
+	    sort(a, i, hi);
+	    }
+		
+		private static void exch(Comparable [] a,int i, int j) {
+				Comparable temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+			}
+
+			
+			public static void main(String[] args) {
+				Random rnd = new Random();
+				Comparable [] arr = new Integer[10];
+				for (int i = 0; i < 10; i++) 
+					arr[i] = rnd.nextInt(100);
+				
+					for (int i = 0; i < 10; i++)
+						System.out.print(arr[i]+ " ");
+					
+					System.out.println(" ");
+					
+					sort(arr);
+					
+					for (int i = 0; i < 10; i++)
+						System.out.print(arr[i]+ " ");
+			
+			}
+		}
+		
+////////////////////////////////////////////////////////////
+
+
+
+Varyant s bukvami
+
+
+package apa;
+import java.util.*;
+
+public class threewqs {
+
+	public static void sort(char [] a)
+	{	
+		sort(a,0,a.length-1);
+	}
+	
+		static void sort(char a[], int lo, int hi)
+		{ 
+			if(hi<=lo) return;
+			
+		int i = lo, j = hi+1;
+	    int p = lo, q = hi+1;
+	    char v = a[lo];
+	    
+	    while (true) {
+	    	
+	        while (a[++i] < v)  if (i == hi) break;
+	        while (v < a[--j])  if (j == lo) break;
+
+	        if (i == j && a[i] == v)   exch(a, ++p, i);
+	        
+	        if (i >= j) break;
+	        exch(a, i, j);
+	        
+	        if  (a[i] == v) exch(a, ++p, i);
+	        if  (a[j] == v) exch(a, --q, j);
+		}
+	    i = j + 1;
+	    for (int k = lo; k <= p; k++) exch(a, k, j--);
+	    for (int k = hi; k >= q; k--) exch(a, k, i++);
+
+	    sort(a, lo, j);
+	    sort(a, i, hi);
+	    }
+				
+			private static void exch(char [] a,int i, int j) {
+				char temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+			}
+				
+			public static void main(String[] args) {
+				/*	Random rnd = new Random(); 
+				  	int[] arr = new int[10];
+					for (int i = 0; i < 10; i++) 
+							arr[i] = rnd.nextInt(100);		
+				*/
+				
+				String str = "QUICKSORTEXAMPLE";
+				char b[] = str.toCharArray();
+					
+					for (int i = 0; i < 16; i++)
+						System.out.print(b[i]+ " ");
+						System.out.println(" ");
+					
+					sort(b);
+					
+					for (int i = 0; i < 16; i++)
+						System.out.print(b[i]+ " ");
+			
+			}
+		}
+				
