@@ -1,0 +1,73 @@
+package homework;
+import java.io.*;
+
+public class Stackuse{
+	
+	private String elem;
+	private Stackuse next;
+	Stackuse(String s){
+		elem=s;
+		next=null;
+	}
+	
+	public void add(String s){
+		if (next==null) next=new Stackuse(s);
+		else{ 
+			Stackuse temp=next;
+			while (temp.next!=null) temp=temp.next;
+			temp.next=new Stackuse(s);
+		}
+	}
+	public void show(){
+		Stackuse temp=new Stackuse(elem);
+		temp.next=next;
+		while (temp!=null){
+			System.out.print(temp.elem+" ");
+			temp=temp.next;
+		}
+	}
+	public void taskadd(){
+		boolean sw=false;
+		if(elem.charAt(0)=='z')
+		{
+			Stackuse t=new Stackuse(elem);
+			t.next=next;
+			elem="; ";
+			next=t;
+			sw=true;
+		}
+		Stackuse temp=new Stackuse(next.elem);
+		if (sw) temp.next=next.next;
+		else temp.next=next;
+		while(temp!=null)
+		{
+			if (temp.elem.charAt(0)=='z'){
+				Stackuse t=new Stackuse(temp.elem);
+				t.next=temp.next;
+				temp.elem="; ";
+				temp.next=t;
+				temp=temp.next;
+			}
+			temp=temp.next;
+		}
+	}
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub\
+		FileReader f=new FileReader("Text.txt");
+		BufferedReader br=new BufferedReader(f);
+		String temp=br.readLine();
+		Stackuse st=new Stackuse(temp);
+		temp=br.readLine();
+		while(temp!=null){
+			st.add(temp);
+			temp=br.readLine();
+		}
+		st.show();
+		st.taskadd();
+		System.out.println();
+		st.show();
+		br.close();
+	}
+
+}
