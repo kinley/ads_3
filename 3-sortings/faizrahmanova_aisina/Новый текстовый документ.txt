@@ -1,0 +1,2 @@
+PrArray & PrQueue 1 000 000 chisel sort. ochen' medlenno
+PrHerap otsortiroval ~ za 6 sek.
