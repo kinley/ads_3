@@ -1,0 +1,74 @@
+package homework;
+import java.util.*;
+
+public class Randombag<Item> implements Iterable<Item> {
+    private Integer n;
+    private Node<Item> listik;
+    private static class Node<Item> {
+        private Item item;
+        private Node<Item> next;
+    }
+    Randombag() {
+        listik=null;
+        n=0;
+    }
+    public boolean isEmpty() {
+        return listik==null;
+    }
+    public int size() {
+        return n;
+    } 
+    public void add(Item item) {
+        Node<Item> temp=listik;
+        listik=new Node<Item>();
+        listik.item=item;
+        listik.next=temp;
+        n++;
+    }
+    public void show(){
+    	Node<Item> temp=listik;
+    	while(temp!=null){
+    		System.out.print(temp.item+" ");
+    		temp=temp.next;
+    	}
+    	System.out.println();
+    }
+	public void randomShow(){
+    	Random r=new Random();
+    	Item[] m=(Item[]) new Object[n];
+    	Node<Item> temp=listik;
+    	for(int j=0;j<n||temp!=null;j++){
+    		m[j]=temp.item;
+    		temp=temp.next;
+    	}
+    	int size=n;
+    	for(int i=0;i<n;i++){
+    		int rand=r.nextInt(size);
+    		System.out.print(m[rand]+" ");
+    		size--;
+    		while(rand<size){
+    			m[rand]=m[rand+1];
+    			rand++;
+    		}
+    	}
+    	System.out.println();
+    }   
+	
+	public static void main(String[] args) {
+		
+		Randombag<Integer> rb=new Randombag<Integer>();
+		rb.add(2);rb.add(4);rb.add(8);rb.add(9);
+		rb.add(1);rb.add(6);rb.add(5);rb.add(3);
+		System.out.println("List:");
+		rb.show();
+		System.out.println("Randombag:");
+		rb.randomShow();
+	}
+	@Override
+	public Iterator<Item> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+
+
