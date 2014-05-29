@@ -1,0 +1,9 @@
+Petrov +
+Sidorov -
+Salimov ?
+Ivanov +
+Gavrilov +
+Semenov +
+Gladkov -
+Zhirkov ?
+Kombarov ?
